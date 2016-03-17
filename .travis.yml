@@ -1,0 +1,26 @@
+language: python
+python:
+- 2.7
+install:
+- pip install -r requirements.txt
+- pip install .
+deploy:
+  provider: pypi
+  user: dbarroso
+  password:
+    secure: RvdCJFYqDqI2rQXGKAG8p703OKg+2gs9FYhvOLLS2rf8vkrjV1L+ojlF9K2phPQntxssGjECS4CidSdsuvJRyuC3Y2YLLMiaQ7gYJ3MH3SxeIfsE3echnh0INwyLgDPBg2a73j+CZIcIkuzrvWEewUFINPqWgp4HeOSifvvYRB+2kbskLounugs+146xtum/fHoX+7oW22tTtXhQcKKhyzqrYOeLYs+v18PbJ0g6CNF9E7APd8yvjan/8ZAHMzZDkwdHFCoZMsYEBt6qxh7xIgoY75ghpAahrI+BEYNpd7DhSJ2CLojwOneaCNlLrWBKgqFUTpWcBpK7h7POlT9S2AAmOvuXIJhSiCvB5DvMd2J9klfoRHy04XhVDQgdTc5UG8FzzdewTmxwv5ONIensHFKx4yb1rNATZNsR8E2II+CXPWnf6cUxRjUzMW7v2y8fEYBUJxPJUjMGD9TD9DkfOaWRCmWhE4d6Uv3Ndv8t7bzWMd74OVDXDKJwjlQ01is2wmkrYH4rkGS/zVwNpNHkQtBkCfSD2T9FcJ8HDQamustJ8s+t7Vpb+8p0CNtPx3kDNZC/PS5s3zy8WMmFqry7x5Xc4FxhW4SgrQSe8DDUca7YRT0WySkduR/QVGgrvgaDM0/pznACNlLVnMUeZgcvXx24X1Ynf5GblYoOVAQ2qAo=
+  on:
+    tags: true
+    branch: master
+script:
+- cd test/unit
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_arp_table
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_facts
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_interfaces
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_interfaces_ip
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_lldp_neighbors
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_lldp_neighbors_detail
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_mac_address_table
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_ntp_peers
+- nosetests -v TestNXOSDriver:TestGetterNXOSDriver.test_get_snmp_information
+- cd ../..

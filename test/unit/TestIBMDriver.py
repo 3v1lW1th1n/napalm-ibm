@@ -14,8 +14,8 @@
 
 import unittest
 
-from napalm.ibm import IBMDriver
-from base import TestConfigNetworkDriver
+from napalm_ibm.ibm import IBMDriver
+from napalm_base.test.base import TestConfigNetworkDriver, TestGettersNetworkDriver
 
 
 class TestConfigIBMDriver(unittest.TestCase, TestConfigNetworkDriver):
