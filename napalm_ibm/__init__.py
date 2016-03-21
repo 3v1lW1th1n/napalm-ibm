@@ -13,3 +13,4 @@
 # the License.
 
 """napalm_ibm package."""
+from ibm import IBMDriver
