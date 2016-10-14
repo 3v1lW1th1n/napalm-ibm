@@ -13,5 +13,6 @@ deploy:
     tags: true
     branch: master
 script:
+- pylama .
 - cd test/unit
 - cd ../..

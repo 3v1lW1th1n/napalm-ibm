@@ -1,2 +1,2 @@
-napalm-base
+napalm-base==0.17.0
 bnclient
