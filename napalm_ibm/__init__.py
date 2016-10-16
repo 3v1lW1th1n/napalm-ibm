@@ -13,4 +13,15 @@
 # the License.
 
 """napalm_ibm package."""
-from ibm import IBMDriver
+# Import stdlib
+import pkg_resources
+
+# Import local modules
+from napalm_ibm.ibm import IBMDriver
+
+try:
+    __version__ = pkg_resources.get_distribution('napalm-ibm').version
+except pkg_resources.DistributionNotFound:
+    __version__ = "Not installed"
+
+__all__ = ('IBMDriver',)
