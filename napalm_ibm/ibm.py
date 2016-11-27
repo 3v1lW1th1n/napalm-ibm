@@ -31,7 +31,6 @@ class IBMDriver(NetworkDriver):
         self.password = password
         self.timeout = timeout
         self.argv = ['', '-u', username, '-p', password, hostname]
-        self.bnc = bnclient.bnclient(self.argv)
         self.config_replace = False
         self.config = {"running": "", "candidate": "", "rollback": ""}
         self.filename_running = "/tmp/" + hostname + "-running.conf"
@@ -43,6 +42,7 @@ class IBMDriver(NetworkDriver):
         return str.split(' ')
 
     def open(self):
+        self.bnc = bnclient.bnclient(self.argv)
         self.bnc.connect(self.timeout)
         self.bnc.sendhello()
         self._get_config(self.filename_rollback)
