@@ -38,7 +38,7 @@ class IBMDriver(NetworkDriver):
         self.filename_rollback = "/tmp/" + hostname + "-rollback.conf"
         self.error = StringIO()
 
-    def str2argv(self, str=''):
+    def _str2argv(self, str=''):
         return str.split(' ')
 
     def open(self):
@@ -65,11 +65,11 @@ class IBMDriver(NetworkDriver):
         self.error = StringIO()
         old_stdout = sys.stdout
         sys.stdout = self.error
-        self.bnc.sendrpc(self.str2argv(cmd))
+        self.bnc.sendrpc(self._str2argv(cmd))
         sys.stdout = old_stdout
 
     def _get_config(self, filename):
-        self.bnc.sendrpc(self.str2argv("-o get -f " + filename))
+        self.bnc.sendrpc(self._str2argv("-o get -f " + filename))
 
     def _load_config(self, filename, config):
         self._get_config(self.filename_rollback)
